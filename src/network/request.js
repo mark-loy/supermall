@@ -3,7 +3,7 @@ import Axios from "axios";
 export function request(config) {
   //1创建axios实列
   const instance = Axios.create({
-    baseURL: 'http://152.136.185.210:8000',
+    baseURL: 'http://152.136.185.210:8000/api/n3',
     timeout: 8000
   })
 

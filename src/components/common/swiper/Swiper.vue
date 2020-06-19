@@ -3,13 +3,15 @@
       <div class="swiper" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
         <slot></slot>
       </div>
-      <slot name="indicator">
-      </slot>
+
+      <slot name="indicator"></slot>
+
       <div class="indicator">
         <slot name="indicator" v-if="showIndicator && slideCount>1">
           <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
         </slot>
       </div>
+
     </div>
 </template>
 
@@ -17,19 +19,19 @@
 	export default {
 		name: "Swiper",
     props: {
-      interval: {
+      interval: {  //轮播间隔时间
 		    type: Number,
         default: 3000
       },
-      animDuration: {
+      animDuration: {//图片轮播速度
 		    type: Number,
-        default: 300
+        default: 500
       },
-      moveRatio: {
+      moveRatio: {//移动图片的百分比
         type: Number,
         default: 0.25
       },
-      showIndicator: {
+      showIndicator: {// 开启/关闭轮播
         type: Boolean,
         default: true
       }
