@@ -1,8 +1,8 @@
 <template>
   <div class="goods-item">
-    <a :href="goodsItem.link">
-      <img :src="goodsItem.show.img" @load="imageLoad">
-    </a>
+
+    <img :src="goodsItem.show.img" @load="imageLoad" @click="itemDetail">
+
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
@@ -24,9 +24,11 @@
     },
     methods: {
       imageLoad() {
-        console.log('sssss');
         this.$bus.$emit('imageLoad')
-      }
+      },
+      itemDetail() {
+        this.$router.push('/detail/' + this.goodsItem.iid)
+      },
     }
   }
 </script>

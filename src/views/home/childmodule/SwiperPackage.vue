@@ -1,13 +1,9 @@
 <template>
-  <div>
     <Swiper>
       <SwiperItem v-for="item in barners">
-        <a :href="item.link">
-          <img :src="item.image"/>
-        </a>
+          <img :src="item.image" @load="swipperload"/>
       </SwiperItem>
     </Swiper>
-  </div>
 </template>
 
 <script>
@@ -19,11 +15,24 @@
       Swiper,
       SwiperItem
     },
+    data() {
+      return {
+        isload: false
+      }
+    },
     props: {
       barners: {
         type: Array,
         default() {
           return []
+        }
+      }
+    },
+    methods: {
+      swipperload() {
+        if(!this.isload) {
+          this.$emit('swipperload')
+          this.isload = true
         }
       }
     }

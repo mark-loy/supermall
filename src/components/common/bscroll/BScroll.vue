@@ -33,8 +33,11 @@
       scrollUp() {
         this.scroll && this.scroll.finishPullUp()
       },
-      imageLoad() {
+      refresh() {
         this.scroll && this.scroll.refresh()
+      },
+      scroll_Y() {
+        return this.scroll ? this.scroll.y : 0
       }
     },
     mounted() {
