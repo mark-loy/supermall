@@ -25,7 +25,7 @@
       </div>
       <div class="shop-middle-right">
         <table>
-          <tr class="tr-score" v-for="(item, index) in shopInfo.score">
+          <tr class="tr-score" v-for="(item, index) in shopInfo.score" :key="index">
             <td class="td-score">{{item.name}}</td>
             <td :class="{scoreColor: item.isBetter}" class="score">{{item.score}}</td>
             <td :class="{betterColor: item.isBetter}" class="better">{{item.isBetter ? '高' : '低'}}</td>

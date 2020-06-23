@@ -1,28 +1,38 @@
 <template>
-  <div class="shopShow">
-
+  <div class="shopShow" v-if="Object.keys(shopShow).length > 0">
      <div class="start"></div>
      <div class="desc">{{shopShow.desc}}</div>
      <div class="end"></div>
      <div  class="imageShow" v-for="shop in shopShow.detailImage">
        <div class="key">{{shop.key}}</div>
        <div v-for="item in shop.list">
-         <img class="img" :src="item">
+         <img class="img" :src="item" @load="loadimages">
        </div>
-
      </div>
-
   </div>
 </template>
 
 <script>
   export default {
     name: "DeShopsShow",
+    data() {
+      return {
+        imgCount: 0
+      }
+    },
     props: {
       shopShow: {
         type: Object,
         default() {
           return {}
+        }
+      }
+    },
+    methods: {
+      loadimages() {
+        //判断图片是否加载完成 只有完成时才发送事件
+        if (++this.imgCount === this.shopShow.detailImage[0].list.length) {
+          this.$emit('loadimages')
         }
       }
     }
@@ -32,7 +42,7 @@
 <style scoped>
   .shopShow {
     padding: 20px 10px;
-
+    border-bottom: 5px solid rgba(100, 100, 100, .1);
   }
 
   .desc {

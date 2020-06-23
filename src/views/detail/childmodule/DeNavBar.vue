@@ -6,7 +6,7 @@
       </div>
       <div slot="center" class="center">
           <div  v-for="(item, index) in title" class="item" :class="{color:index === currentIndex}"
-                @click="colorClick(index)">{{item}}</div>
+                @click="colorClick(index)" :key="index">{{item}}</div>
       </div>
     </nav-bar>
   </div>
@@ -29,6 +29,7 @@
     methods: {
       colorClick(index) {
         this.currentIndex = index
+        this.$emit('skip', index)
       },
       back() {
         this.$router.back()
