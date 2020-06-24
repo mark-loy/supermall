@@ -47,7 +47,7 @@
         pullUpLoad: this.pullUpLoad,
       })
       this.scroll.on('scroll', position => {
-        this.$emit('isShowBackTop', position)
+        this.$emit('scroll', position)
       })
       this.scroll.on('pullingUp', () => {
         this.$emit('pullingUp')

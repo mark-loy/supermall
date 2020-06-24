@@ -32,7 +32,7 @@
         if (this.$route.path.indexOf('/home') !== -1) {
           this.$bus.$emit('homeImageLoad')
         }else if (this.$route.path.indexOf('/detail') !== -1) {
-          this.$emit('detailImageLoad')
+          this.$bus.$emit('detailImageLoad')
         }
       },
       itemDetail() {

@@ -7,8 +7,8 @@
         <div slot="item-text">首页</div>
       </tab-bar-item>
       <tab-bar-item path="/category" >
-        <img slot="item-icon" src="~assets/img/tabbar/category.svg">
-        <img slot="item-icon-active" src="~assets/img/tabbar/category_active.svg">
+        <img slot="item-icon" src="~assets/img/tabbar/category.png">
+        <img slot="item-icon-active" src="~assets/img/tabbar/category_active.png">
         <div slot="item-text">分类</div>
       </tab-bar-item>
       <tab-bar-item path="/shopcart" >

@@ -3,7 +3,7 @@
   <div class="home">
     <nav-bar class="home-navbar"><div slot="center" class="center">购物街</div></nav-bar>
     <tab-controller :class="{ceiling: isceiling}"  ref="tabcontrol1" :title="title" @tabClick='tabClick' v-show="isceiling"/>
-    <b-scroll class="scroll" ref="scroll" @isShowBackTop="scoll" :probeType="3" @pullingUp="pullingUp" :pullUpLoad="true">
+    <b-scroll class="scroll" ref="scroll" @scroll="isShowBackTop" :probeType="3" @pullingUp="pullingUp" :pullUpLoad="true">
       <swiper-package :barners="barners" @swipperload="swipperload"/>
       <recommend-view :recommends="recommends"/>
       <feature/>
@@ -30,10 +30,12 @@
   import {getHomeGoods} from "network/home";
 
   import {debounce} from "common/util";
+  import {backTopMixin} from "common/mixin";
 
 
   export default {
     name: "Home",
+    mixins: [backTopMixin],
     components: {
       NavBar,
       TabController,
@@ -55,7 +57,6 @@
         },
         currentType: 'pop',
         title: ['流行', '新款', '精选'],
-        isShow: false,
         offsetTop: 0,
         isceiling: false,
         scrollY: 0
@@ -101,12 +102,9 @@
         this.$refs.tabcontrol1.currentIndex = index
         this.$refs.tabcontrol.currentIndex = index
       },
-      backTop() {
-        this.$refs.scroll.scrollTo(0, 0, 500) //回到给定的坐标0，0 用时500ms
-      },
-      scoll(position) {
-        //是否显示返回顶部图标
-        this.isShow = (-position.y) > 1000
+      isShowBackTop(position) {
+        //返回顶部
+        this.backTopPosition(position)
         //是否需要吸顶
         this.isceiling = (-position.y) > this.offsetTop
       },

@@ -50,10 +50,11 @@
     flex: 1;
     text-align: center;
     height: 49px;
+    line-height: 20px;
   }
 
   .tab-bar-item div {
-    font-size: 15px;
+    font-size: 13px;
   }
   .tab-bar-item img {
     width: 23px;
