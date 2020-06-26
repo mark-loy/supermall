@@ -1,4 +1,4 @@
-import {ADD_CART_COUNT, ADD_CART_PRODUCT} from "./mutation-type";
+import {ADD_CART_COUNT, ADD_CART_PRODUCT, UPDATE_IS_CHECKED_FALSE, UPDATE_IS_CHECKED_TRUE} from "./mutation-type";
 
 
 export default {
@@ -7,6 +7,15 @@ export default {
   },
   [ADD_CART_PRODUCT](state, payload) {
     state.productList.push(payload)
-    console.log(state.productList);
+  },
+  [UPDATE_IS_CHECKED_FALSE](state) {
+    state.productList.forEach(item => {
+      item.isChecked = false
+    })
+  },
+  [UPDATE_IS_CHECKED_TRUE](state) {
+    state.productList.forEach(item => {
+      item.isChecked = true
+    })
   }
 }

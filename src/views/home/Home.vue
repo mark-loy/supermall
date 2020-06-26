@@ -145,15 +145,10 @@
 
   .home-navbar {
     display: flex;
-
     background-color: var(--color-tint);
     color: #ffffff;
-
-  }
-
-  .center {
-
-
+    font-size: 17px;
+    font-weight: bold;
   }
 
   .ceiling {

@@ -1,6 +1,6 @@
 <template>
     <Swiper>
-      <SwiperItem v-for="item in barners">
+      <SwiperItem v-for="item in barners" >
           <img :src="item.image" @load="swipperload"/>
       </SwiperItem>
     </Swiper>

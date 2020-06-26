@@ -6,7 +6,7 @@
      <div  class="imageShow" v-for="shop in shopShow.detailImage">
        <div class="key">{{shop.key}}</div>
        <div v-for="item in shop.list">
-         <img class="img" :src="item" @load="loadimages">
+         <img class="img" v-lazy="item" @load="loadimages">
        </div>
      </div>
   </div>

@@ -11,7 +11,7 @@
       <goods-list :goodsList="recommendDate" ref="list"/>
     </b-scroll>
     <back-top @click.native="backTop" v-show="isShow"/>
-    <de-bottom-bar @addCart="addCart"/>
+    <de-bottom-bar @addCart="addCart" />
   </div>
 </template>
 
@@ -33,6 +33,7 @@
 
   import {debounce} from "common/util";
   import {backTopMixin} from "common/mixin"
+  import Toast from "../../components/common/toast/Toast";
 
   export default {
     name: "Detail",
@@ -72,7 +73,7 @@
 
       //获取详情数据
       detailData(this.iid).then(res => {
-         console.log(res);
+         // console.log(res);
         const result = res.result
         //1.获取轮播图数据
         this.topImages = result.itemInfo.topImages
@@ -97,10 +98,9 @@
 
       this.clickTabTitle = debounce(() => {
         this.skipTo = []
-        this.skipTo.push(0, this.$refs.params.$el.offsetTop,
-          this.$refs.comment.$el.offsetTop, this.$refs.list.$el.offsetTop)
+        this.skipTo.push(0, this.$refs.params.$el.offsetTop, this.$refs.comment.$el.offsetTop, this.$refs.list.$el.offsetTop)
         this.skipTo.push(Number.MAX_VALUE)
-        console.log(this.skipTo);
+        // console.log(this.skipTo);
       }, 100)
     },
     mounted() {
@@ -160,10 +160,12 @@
         product.iid = this.iid
         product.image = this.topImages[0]
         product.desc = this.goodsInfo.desc
-        product.price = this.goodsInfo.newPrice
-        product.titel = this.goodsInfo.title
+        product.price = this.goodsInfo.nowPrice
+        product.title = this.goodsInfo.title
         // this.$store.commit('addCart', product)
-        this.$store.dispatch('addCart', product)
+        this.$store.dispatch('addCart', product).then(res => {
+          this.$toast.openToast(res)
+        })
       }
     },
   }

@@ -6,7 +6,7 @@ import actions from "./actions";
 Vue.use(Vuex)
 
 const state = {
-  productList: []
+  productList: [],
 }
 
 export default new Vuex.Store({

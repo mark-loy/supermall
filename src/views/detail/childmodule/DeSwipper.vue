@@ -1,7 +1,7 @@
 <template>
   <swiper class="swipers">
-    <swiper-item v-for="item in topImages">
-      <img :src="item"/>
+    <swiper-item v-for="(item, index) in topImages" :key="index">
+      <img class="img" :src="item"/>
     </swiper-item>
   </swiper>
 </template>
@@ -29,6 +29,10 @@
 
 <style scoped>
   .swipers {
-    height: 300px;
+    height: 400px;
+  }
+
+  .img {
+    height: 450px;
   }
 </style>
