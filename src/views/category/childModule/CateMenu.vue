@@ -1,6 +1,6 @@
 <template>
   <div class="cate-menu">
-    <div class="menu-item" v-for="(item, index) in menuData" :key="index" @click="clickStyle(index, item.maitKey)"
+    <div class="menu-item" v-for="(item, index) in menuData" :key="index" @click="clickStyle(index, item.maitKey, item.miniWallkey)"
          :class="{checked: currentIndex === index}">
       <span>{{item.title}}</span>
     </div>
@@ -24,9 +24,9 @@
       }
     },
     methods: {
-      clickStyle(index, maitKey) {
+      clickStyle(index, maitKey, miniWallkey) {
         this.currentIndex = index
-        this.$emit('checkedMaitKey', maitKey)
+        this.$emit('checkedMaitKey', maitKey, miniWallkey)
       }
     }
   }

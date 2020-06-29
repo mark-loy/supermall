@@ -42,9 +42,9 @@
     },
     mounted() {
       this.scroll = new BScroll(this.$refs.scroll, {
-        probeType: this.probeType,
+        probeType: this.probeType,  //3：全过程监听位置信息  2：只在滑动过程中监听位置信息
         click: true,
-        pullUpLoad: this.pullUpLoad,
+        pullUpLoad: this.pullUpLoad,//true开启下拉加载
       })
       this.scroll.on('scroll', position => {
         this.$emit('scroll', position)

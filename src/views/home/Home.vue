@@ -92,9 +92,9 @@
        * @param index
        */
       tabClick(index) {
-        if(index == 0) {
+        if(index === 0) {
           this.currentType = 'pop'
-        }else if(index == 1) {
+        }else if(index === 1) {
           this.currentType = 'new'
         }else {
           this.currentType = 'sell'

@@ -24,7 +24,7 @@
     },
     computed: {
       showImage() {
-        return this.goodsItem.image || this.goodsItem.show.img
+        return this.goodsItem.img || this.goodsItem.image || this.goodsItem.show.img
       }
     },
     methods: {
@@ -33,6 +33,8 @@
           this.$bus.$emit('homeImageLoad')
         }else if (this.$route.path.indexOf('/detail') !== -1) {
           this.$bus.$emit('detailImageLoad')
+        }else if(this.$route.path.indexOf('/category') !== -1) {
+          this.$bus.$emit('categoryImageLoad')
         }
       },
       itemDetail() {
